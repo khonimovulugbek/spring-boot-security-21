@@ -17,12 +17,14 @@ public class SecurityConfig {
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(customizer -> customizer.disable());
-        http.authorizeHttpRequests(request -> request.anyRequest().authenticated());
-//        http.formLogin(Customizer.withDefaults()); // TODO: this is for browser login
-        http.httpBasic(Customizer.withDefaults()); // TODO: this is for basic requests (e.x Postman)
-        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // TODO: it make session stateless
+        return http
+                .csrf(customizer -> customizer.disable())
+                .authorizeHttpRequests(request -> request.anyRequest().authenticated())
+                .httpBasic(Customizer.withDefaults()) // TODO: this is for basic requests (e.x Postman)
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .build(); // TODO: it make session stateless
 
-        return http.build();
+//        http.formLogin(Customizer.withDefaults()); // TODO: this is for browser login
     }
 }
