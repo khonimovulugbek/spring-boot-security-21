@@ -11,10 +11,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     /**
-     * At this time security switch off
+     * Disable csrf and authenticate any request
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf(customizer -> customizer.disable());
+        http.authorizeHttpRequests(request -> request.anyRequest().authenticated());
+
         return http.build();
     }
 }
