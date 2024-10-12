@@ -8,12 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepo repo;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -27,11 +31,12 @@ public class CustomUserDetailsService implements UserDetailsService {
     public void init() {
         Users admin = new Users();
         admin.setUsername("admin");
-        admin.setPassword("admin");
+        admin.setPassword(passwordEncoder.encode("admin"));
         repo.save(admin);
         Users user = new Users();
         user.setUsername("user");
-        user.setPassword("user");
+        user.setPassword(passwordEncoder.encode("user"));
         repo.save(user);
     }
+
 }
