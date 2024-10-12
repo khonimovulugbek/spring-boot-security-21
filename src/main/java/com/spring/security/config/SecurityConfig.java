@@ -6,25 +6,28 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    /**
-     * Permitted any request by form login using default username and password (which is written in application.yml).
-     */
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(request -> request.anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults()) // TODO: this is for basic requests (e.x Postman)
+                .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .build(); // TODO: it make session stateless
+                .build();
+    }
 
-//        http.formLogin(Customizer.withDefaults()); // TODO: this is for browser login
+    @Bean
+    public UserDetailsService userDetailsService(){
+        return new InMemoryUserDetailsManager(); // TODO: unauthorized
     }
 }
