@@ -1,5 +1,6 @@
 package com.spring.security.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("")
 public class AppController {
     @GetMapping
-    public String checkSecurity() {
-        return "Spring security";
+    public String checkSecurity(HttpServletRequest request) {
+           return "Spring security | session id is " + request.getSession().getId();
     }
 }
