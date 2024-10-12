@@ -18,7 +18,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(customizer -> customizer.disable());
         http.authorizeHttpRequests(request -> request.anyRequest().authenticated());
-        http.formLogin(Customizer.withDefaults());
+        http.formLogin(Customizer.withDefaults()); // TODO: this is for browser login
+        http.httpBasic(Customizer.withDefaults()); // TODO: this is for basic requests (e.x Postman)
 
         return http.build();
     }
