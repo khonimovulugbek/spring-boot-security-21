@@ -1,21 +1,21 @@
 package com.spring.service;
 
-import com.spring.repo.UserRepo;
 import com.spring.model.Users;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.spring.repo.UserRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
-    @Autowired
-    private UserRepo userRepo;
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private JWTService jwtService;
+
+    private final UserRepo userRepo;
+    private final AuthenticationManager authenticationManager;
+    private final JWTService jwtService;
+
     public Users register(Users user) {
         return userRepo.save(user);
     }
