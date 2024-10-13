@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: security
+  security:
+    user:
+      name: khan
+      password: hakker7707
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
