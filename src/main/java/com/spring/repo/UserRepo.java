@@ -1,6 +1,6 @@
-package com.spring.security.repo;
+package com.spring.repo;
 
-import com.spring.security.model.Users;
+import com.spring.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

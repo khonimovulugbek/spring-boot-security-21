@@ -1,7 +1,7 @@
-package com.spring.security.config;
+package com.spring.config;
 
-import com.spring.security.service.CustomUserDetailsService;
-import com.spring.security.service.JWTService;
+import com.spring.service.CustomUserDetailsService;
+import com.spring.service.JWTService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

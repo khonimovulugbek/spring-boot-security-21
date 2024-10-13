@@ -1,7 +1,7 @@
-package com.spring.security.service;
+package com.spring.service;
 
-import com.spring.security.model.Users;
-import com.spring.security.repo.UserRepo;
+import com.spring.repo.UserRepo;
+import com.spring.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

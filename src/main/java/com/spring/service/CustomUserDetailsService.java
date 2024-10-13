@@ -1,8 +1,8 @@
-package com.spring.security.service;
+package com.spring.service;
 
-import com.spring.security.model.UserPrincipal;
-import com.spring.security.model.Users;
-import com.spring.security.repo.UserRepo;
+import com.spring.model.UserPrincipal;
+import com.spring.model.Users;
+import com.spring.repo.UserRepo;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
