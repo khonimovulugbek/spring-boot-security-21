@@ -1,6 +1,5 @@
-package com.spring.service;
+package com.spring.security;
 
-import com.spring.model.UserPrincipal;
 import com.spring.model.Users;
 import com.spring.repo.UserRepo;
 import lombok.RequiredArgsConstructor;
