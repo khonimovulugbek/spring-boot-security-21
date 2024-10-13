@@ -14,13 +14,15 @@ public class UserService {
     private UserRepo userRepo;
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
+    private JWTService jwtService;
     public Users register(Users user) {
         return userRepo.save(user);
     }
 
     public String verify(Users user) {
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-        if (authenticate.isAuthenticated()) return "Successfully authenticated";
+        if (authenticate.isAuthenticated()) return jwtService.generateToken();
         else return "Authentication failed";
     }
 }
